@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,11 @@ class EmployeeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'first_name' => fake()->firstName,
+            'last_name' => fake()->lastName,
+            'email' => fake()->safeEmail,
+            'company_id' => Company::select('id')->orderByRaw("RAND()")->first()->id,
+            'phone' => fake()->numerify('##########')
         ];
     }
 }

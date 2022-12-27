@@ -31,7 +31,7 @@
                     <td>
                         <a class="btn btn-primary" href="{{route('employees.edit',$employee->id)}}">Edit</a>
                         <form method="POST" action="{{ route('employees.destroy', $employee->id) }}"
-                              class="pull-left mr-4">
+                              class="pull-left mr-4 float-end">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
