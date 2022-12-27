@@ -13,7 +13,7 @@
                 <th style="width: 10px">#</th>
                 <th>Name</th>
                 <th>email</th>
-                <th>website</th>
+                <th width="20%">website</th>
                 <th>logo</th>
                 <th>Action</th>
             </tr>
@@ -31,7 +31,7 @@
                     <td>
                         <a class="btn btn-primary" href="{{route('companies.edit',$company->id)}}">Edit</a>
                         <form method="POST" action="{{ route('companies.destroy', $company->id) }}"
-                              class="pull-left mr-4">
+                              class="pull-left mr-4 float-end">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>

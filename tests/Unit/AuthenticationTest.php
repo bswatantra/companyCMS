@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Models\Company;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -10,6 +11,13 @@ use PHPUnit\Framework\TestCase;
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
+
+    public function unauthenticated_users_cannot_create_a_new_company()
+    {
+        $task = factory(Company::class)->make();
+        $this->post('/companies/create', $task->toArray())
+            ->assertRedirect('/login');
+    }
 
     public function test_login_screen_can_be_rendered()
     {
